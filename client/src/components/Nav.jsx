@@ -3,8 +3,6 @@ import React from 'react';
 const Nav = ({beginAtZero, setBeginAtZero}) => {
 
   const handleClick = () => {
-    console.log('clicked');
-    console.log(setBeginAtZero);
     setBeginAtZero(!beginAtZero);
   }
 

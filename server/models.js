@@ -3,12 +3,14 @@ const axios = require("axios");
 const API = "https://api.themoviedb.org/3";
 
 const searchShow = async (req, res) => {
-  const showName = "Game of Thrones";
+
+  const query = req.query;
+  console.log(query)
 
   try {
     // search show name to get show ID
     const show = await axios.get(
-      `${API}/search/tv?api_key=${process.env.API_KEY}&query=${showName}`
+      `${API}/search/tv?api_key=${process.env.API_KEY}`, { params: query }
     );
 
     const tvId = show.data.results[0].id;

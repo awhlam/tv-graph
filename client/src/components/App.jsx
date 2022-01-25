@@ -7,11 +7,11 @@ import Chart from './Chart.jsx';
 const App = () => {
   const [showData, setShowData] = useState();
   const [beginAtZero, setBeginAtZero] = useState(false);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('Dexter');
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get('/search');
+      const { data } = await axios.get('/search', { params: {query: searchText} });
       setShowData(data);
     } catch(e) {
       console.log(e);
