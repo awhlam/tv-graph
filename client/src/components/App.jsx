@@ -12,12 +12,7 @@ const App = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get('/search');
-      console.log('data: ', data);
-      let showObj = {};
-      showObj.episodeNums = data.episodes.map(ep => ep.season_number.toString() + '.' + String(ep.episode_number).padStart(2, '0'));
-      showObj.vote_average = data.episodes.map(ep => ep.vote_average);
-      console.log(showObj);
-      setShowData(showObj);
+      setShowData(data);
     } catch(e) {
       console.log(e);
     }

@@ -55,10 +55,10 @@ const Chart = ({showData, beginAtZero}) => {
   };
 
   const data = {
-    labels: showData.episodeNums,
+    labels: Object.keys(showData),
     datasets: [
       {
-        data: showData.vote_average,
+        data: Object.values(showData),
         label: "Viewer Rating",
         borderColor: "rgb(255, 99, 132)",
       },
