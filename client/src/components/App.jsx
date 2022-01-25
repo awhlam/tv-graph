@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header.jsx';
 import Nav from './Nav.jsx';
 import Chart from './Chart.jsx';
+import Footer from './Footer.jsx';
 
 const App = () => {
   const [showData, setShowData] = useState();
@@ -36,6 +37,7 @@ const App = () => {
           showData={showData}
           beginAtZero={beginAtZero}
         />
+        <Footer />
       </div>
     );
   }
