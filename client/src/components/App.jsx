@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './Header.jsx';
+import Nav from './Nav.jsx';
 import Chart from './Chart.jsx';
 
 const App = () => {
   const [showData, setShowData] = useState();
+  const [beginAtZero, setBeginAtZero] = useState(false);
   const [searchText, setSearchText] = useState('');
 
   const fetchData = async () => {
     try {
       const { data } = await axios.get('/search');
-      let showData = {};
-      showData.episodeNums = data.map(ep => ep.season_number.toString() + '.' + String(ep.episode_number).padStart(2, '0'));
-      showData.vote_average = data.map(ep => ep.vote_average);
-      setShowData(showData);
+      console.log('data: ', data);
+      let showObj = {};
+      showObj.episodeNums = data.episodes.map(ep => ep.season_number.toString() + '.' + String(ep.episode_number).padStart(2, '0'));
+      showObj.vote_average = data.episodes.map(ep => ep.vote_average);
+      console.log(showObj);
+      setShowData(showObj);
     } catch(e) {
       console.log(e);
     }
@@ -23,18 +28,19 @@ const App = () => {
   }, [searchText]);
 
   if (!showData) {
-    return (
-      <div>
-        <h1>TV Graph</h1>
-        <p>Search for a TV Show: <input type="text" /></p>
-      </div>
-    );
+    return null;
   } else {
     return (
       <div>
-        <h1>TV Graph</h1>
-        <p>Search for a TV Show: <input type="text" /></p>
-        <Chart showData={showData} />
+        <Header />
+        <Nav
+          beginAtZero={beginAtZero}
+          setBeginAtZero={setBeginAtZero}
+        />
+        <Chart
+          showData={showData}
+          beginAtZero={beginAtZero}
+        />
       </div>
     );
   }

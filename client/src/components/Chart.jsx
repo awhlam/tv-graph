@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,7 +7,6 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -18,24 +17,48 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
 );
 
-const options = {
-  responsive: true,
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
-};
+const fontProps = {
+  size: 24,
+  weight: 'bold'
+}
 
-const Chart = (showData) => {
+const Chart = ({showData, beginAtZero}) => {
+
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Game of Thrones',
+        font: fontProps
+      }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Season & Episode Number",
+          font: fontProps
+        }
+      },
+      y: {
+        beginAtZero: beginAtZero,
+        title: {
+          display: true,
+          text: "Viewer Rating",
+          font: fontProps
+        }
+      },
+    },
+  };
+
   const data = {
-    labels: showData.showData.episodeNums,
+    labels: showData.episodeNums,
     datasets: [
       {
-        data: showData.showData.vote_average,
+        data: showData.vote_average,
         label: "Viewer Rating",
         borderColor: "rgb(255, 99, 132)",
       },
@@ -43,7 +66,11 @@ const Chart = (showData) => {
   };
 
   return (
-    <Line options={options} data={data} />
+    <Line
+      options={options}
+      data={data}
+      height={120}
+    />
   );
 };
 
