@@ -10,8 +10,8 @@ const searchShow = (req, res) => {
   const seasonNum = '1';
 
   axios.get(`https://api.themoviedb.org/3/tv/${tvId}/season/${seasonNum}?api_key=${process.env.API_KEY}`)
-    .then((data) => {
-      res.send(data.data);
+    .then((api) => {
+      res.send(api.data.episodes);
     });
 };
 

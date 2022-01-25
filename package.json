@@ -20,10 +20,13 @@
   },
   "homepage": "https://github.com/awhlam/tv-graph#readme",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.10",
     "axios": "^0.25.0",
+    "chart.js": "^3.7.0",
     "dotenv": "^14.3.0",
     "express": "^4.17.2",
     "react": "^17.0.2",
+    "react-chartjs-2": "^4.0.1",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
