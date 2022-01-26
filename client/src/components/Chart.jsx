@@ -25,7 +25,7 @@ const fontProps = {
 }
 
 const Chart = ({showData, beginAtZero}) => {
-  const delayBetweenPoints = 2000 / Object.keys(showData.episodes).length;
+  const delayBetweenPoints = 3000 / Object.keys(showData.episodes).length;
   const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
   const animation = {
     x: {
