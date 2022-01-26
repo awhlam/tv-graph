@@ -28,7 +28,7 @@ const fontProp = (size) => {
 }
 
 const Chart = ({showData, beginAtZero}) => {
-  const delayBetweenPoints = 3000 / Object.keys(showData.episodes).length;
+  const delayBetweenPoints = 4000 / Object.keys(showData.episodes).length;
   const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
   const animation = {
     x: {
@@ -117,7 +117,7 @@ const Chart = ({showData, beginAtZero}) => {
         label: "Rating",
         borderColor: "rgb(255, 99, 132)",
         trendlineLinear: {
-          style: "black",
+          style: "#FF9636",
           lineStyle: "dotted",
           width: 2
         }

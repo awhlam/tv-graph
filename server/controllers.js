@@ -14,7 +14,8 @@ const searchShow = async (req, res) => {
     showId = data.results[0].id;
     console.log('showId: ', showId);
   } catch (e) {
-    res.status(500).send('Failed to search for show');
+    res.status(500).send('Could not find show');
+    return;
   }
 
   // search seasons
@@ -27,11 +28,11 @@ const searchShow = async (req, res) => {
     console.log('Seasons: ', seasons);
   } catch (e) {
     res.status(500).send('Failed to search for seasons');
+    return;
   }
 
   // search episodes
   try {
-    // fetch all season data asynchronously
     (async () => {
       let episodes = {};
 
@@ -62,6 +63,7 @@ const searchShow = async (req, res) => {
     })();
   } catch (e) {
     res.status(500).send('Failed to search for episodes');
+    return;
   }
 };
 
