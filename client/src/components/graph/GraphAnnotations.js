@@ -4,15 +4,15 @@ const randColor = () => {
   const num1 = Math.floor(Math.random() * 256);
   const num2 = Math.floor(Math.random() * 256);
   const num3 = Math.floor(Math.random() * 256);
-  return `rgba(${num1}, ${num2}, ${num3}, 0.25)`;
+  return `rgba(${num1}, ${num2}, ${num3}, 0.1)`;
 };
 
 const annotateSeason = (season, start, end) => ({
   type: 'box',
   backgroundColor: randColor(),
-  borderWidth: 0,
-  xMax: end,
+  borderWidth: 1,
   xMin: start,
+  xMax: end,
   label: {
     drawTime: 'afterDraw',
     enabled: true,
@@ -29,7 +29,7 @@ const annotateShow = (showData) => {
   // count number of episodes in each season
   const epCounts = {};
   Object.keys(showData.episodes).forEach((ep) => {
-    const season = ep[0];
+    const season = ep.split('.')[0];
     if (!epCounts[season]) {
       epCounts[season] = 1;
     } else {
