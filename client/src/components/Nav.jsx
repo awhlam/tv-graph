@@ -27,7 +27,7 @@ const Nav = ({setShowData, beginAtZero, setBeginAtZero}) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input type="text" size="50" placeholder="Search for a TV Show" value={showName} onChange={handleChange} />
-        <input type="button" value="Search" />
+        <button>Search</button>
       </form>
       <p>Scale from 0: <input type="checkbox" value={beginAtZero} onChange={handleClick}/></p>
     </div>

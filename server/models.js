@@ -51,8 +51,7 @@ const searchShow = async (req, res) => {
 
       // return sorted episode data
       res.send(episodes);
-    }
-  )();
+    })();
   } catch (e) {
     res.status(500).send(e);
   }
