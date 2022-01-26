@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Header = () => {
+function Header() {
   return (
     <h1>
       TV Graph - Episode Rating Trends
     </h1>
-  )
+  );
 }
 
 export default Header;

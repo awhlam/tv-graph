@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './Header.jsx';
 import Nav from './Nav.jsx';
 import Graph from './graph/Graph.jsx';
 import Footer from './Footer.jsx';
 
-const App = () => {
+function App() {
   const [showData, setShowData] = useState();
   const [beginAtZero, setBeginAtZero] = useState(false);
 
@@ -17,14 +17,15 @@ const App = () => {
         beginAtZero={beginAtZero}
         setBeginAtZero={setBeginAtZero}
       />
-      {showData ?
+      {showData ? (
         <Graph
           showData={showData}
           beginAtZero={beginAtZero}
-        /> : null
-      }
+        />
+      ) : null}
+      <Footer />
     </div>
   );
-};
+}
 
 export default App;
