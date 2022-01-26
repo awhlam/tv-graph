@@ -3,10 +3,10 @@ const animation = (showData) => {
 
   const previousY = (ctx) => {
     if (ctx.index === 0 || !ctx.index) {
-      ctx.chart.scales.y.getPixelForValue(100);
-    } else {
-      ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+      return ctx.chart.scales.y.getPixelForValue(100);
     }
+
+    return ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
   };
 
   return {
