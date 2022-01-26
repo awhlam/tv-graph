@@ -3,9 +3,7 @@ const axios = require("axios");
 const API = "https://api.themoviedb.org/3";
 
 const searchShow = async (req, res) => {
-
   const query = req.query;
-  console.log(query)
 
   try {
     // search show name to get show ID
@@ -32,11 +30,12 @@ const searchShow = async (req, res) => {
 
       await Promise.all(
         seasons.map(async (season) => {
+          // fetch data for season
           const { data } = await axios.get(
             `${API}/tv/${tvId}/season/${season}?api_key=${process.env.API_KEY}`
           );
+          // add data from each episode in season
           data.episodes.forEach((ep) => {
-
             const epNum = `${ep.season_number}.${String(
               ep.episode_number
             ).padStart(2, "0")}`;
