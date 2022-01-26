@@ -10,6 +10,7 @@ const searchShow = async (req, res) => {
   // search show name
   try {
     const { data } = await models.getShow(req.query);
+    chartData = data.results[0];
     showId = data.results[0].id;
     console.log('showId: ', showId);
   } catch (e) {
@@ -38,19 +39,21 @@ const searchShow = async (req, res) => {
         seasons.map(async (season) => {
           const { data } = await models.getEpisodes(season);
           data.episodes.forEach((ep) => {
-            const epNum = `${ep.season_number}.${String(ep.episode_number).padStart(2, "0")}`;
-            episodes[epNum] = ep.vote_average;
+            if (ep.vote_count) {
+              const epNum = `${ep.season_number}.${String(ep.episode_number).padStart(2, "0")}`;
+              episodes[epNum] = ep.vote_average;
+            }
           });
         })
       );
 
       // sort episodes in ascending order
-      episodes = Object.fromEntries(
+      chartData.episodes = Object.fromEntries(
         Object.entries(episodes).sort((a, b) => a[0] - b[0])
       );
 
       // return sorted episode data
-      res.send(episodes);
+      res.send(chartData);
     })();
   } catch (e) {
     res.status(500).send('Failed to search for episodes');

@@ -28,13 +28,6 @@ const Chart = ({showData, beginAtZero}) => {
 
   const options = {
     responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Game of Thrones',
-        font: fontProps
-      }
-    },
     scales: {
       x: {
         title: {
@@ -55,10 +48,10 @@ const Chart = ({showData, beginAtZero}) => {
   };
 
   const data = {
-    labels: Object.keys(showData),
+    labels: Object.keys(showData.episodes),
     datasets: [
       {
-        data: Object.values(showData),
+        data: Object.values(showData.episodes),
         label: "Viewer Rating",
         borderColor: "rgb(255, 99, 132)",
       },
@@ -66,11 +59,13 @@ const Chart = ({showData, beginAtZero}) => {
   };
 
   return (
-    <Line
-      options={options}
-      data={data}
-      height={120}
-    />
+    <div class="chart">
+      <Line
+        options={options}
+        data={data}
+        height={120}
+      />
+    </div>
   );
 };
 

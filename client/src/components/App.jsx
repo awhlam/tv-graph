@@ -8,30 +8,20 @@ const App = () => {
   const [showData, setShowData] = useState();
   const [beginAtZero, setBeginAtZero] = useState(false);
 
-  let page = (
-    <div>
-      <Header />
-      <Nav
-        setShowData={setShowData}
-        beginAtZero={beginAtZero}
-        setBeginAtZero={setBeginAtZero}
-      />
-    </div>
-  )
-
   return (
     <div>
       <Header />
       <Nav
+        showData={showData}
         setShowData={setShowData}
         beginAtZero={beginAtZero}
         setBeginAtZero={setBeginAtZero}
       />
       {showData ?
-      <Chart
-        showData={showData}
-        beginAtZero={beginAtZero}
-      /> : null
+        <Chart
+          showData={showData}
+          beginAtZero={beginAtZero}
+        /> : null
       }
     </div>
   );
