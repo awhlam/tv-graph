@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header.jsx';
 import Nav from './Nav.jsx';
-import Chart from './Chart.jsx';
+import Graph from './graph/Graph.jsx';
 import Footer from './Footer.jsx';
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
         setBeginAtZero={setBeginAtZero}
       />
       {showData ?
-        <Chart
+        <Graph
           showData={showData}
           beginAtZero={beginAtZero}
         /> : null

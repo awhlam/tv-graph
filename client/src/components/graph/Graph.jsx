@@ -1,23 +1,10 @@
 import React from "react";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-} from "chart.js";
+import Chart from 'chart.js/auto';
+import annotationPlugin from 'chartjs-plugin-annotation';
 import { Line } from "react-chartjs-2";
 import chartTrendline from "chartjs-plugin-trendline";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Tooltip,
-  chartTrendline,
-);
+Chart.register(annotationPlugin);
 
 const fontProp = (size) => {
   return {
@@ -27,9 +14,67 @@ const fontProp = (size) => {
   }
 }
 
-const Chart = ({showData, beginAtZero}) => {
-  const delayBetweenPoints = 4000 / Object.keys(showData.episodes).length;
-  const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+const randColor = () =>  {
+  const num1 = Math.floor(Math.random() * 256);
+  const num2 = Math.floor(Math.random() * 256);
+  const num3 = Math.floor(Math.random() * 256);
+  return `rgba(${num1}, ${num2}, ${num3}, 0.25)`
+}
+
+const annotateShow = (showData) => {
+  // count number of episodes in each season
+  const epCounts = {};
+  for (const ep in showData.episodes) {
+    const season = ep[0];
+    if (!epCounts[season]) {
+      epCounts[season] = 1;
+    } else {
+      epCounts[season]++;
+    }
+  }
+
+  // generate each season's annotation
+  let firstEp = 0;
+  let lastEp = 1;
+  const annotations = {};
+  for (const season in epCounts) {
+    lastEp = firstEp + epCounts[season];
+    annotations[season] = annotateSeason(season, firstEp, lastEp);
+    firstEp = lastEp;
+  }
+
+  return annotations
+}
+
+const annotateSeason = (season, start, end) => {
+  return {
+    type: 'box',
+    backgroundColor: randColor(),
+    borderWidth: 0,
+    xMax: end,
+    xMin: start,
+    label: {
+      drawTime: 'afterDraw',
+      enabled: true,
+      content: `Season ${season.toString()}`,
+      position: {
+        x: 'center',
+        y: 'start'
+      }
+    }
+  }
+};
+
+const Graph = ({showData, beginAtZero}) => {
+  // ANIMATION
+  const delayBetweenPoints = 3000 / Object.keys(showData.episodes).length;
+  const previousY = (ctx) => {
+    if (ctx.index === 0 || !ctx.index) {
+      ctx.chart.scales.y.getPixelForValue(100);
+    } else {
+      ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+    }
+  }
   const animation = {
     x: {
       type: 'number',
@@ -59,10 +104,17 @@ const Chart = ({showData, beginAtZero}) => {
     }
   };
 
+  // OPTIONS
   const options = {
     animation,
     responsive: true,
     plugins: {
+      legend: {
+        display: false
+      },
+      annotation: {
+        annotations: annotateShow(showData)
+      },
       tooltip: {
         callbacks: {
           label: (tooltipItem, chart) => {
@@ -99,6 +151,7 @@ const Chart = ({showData, beginAtZero}) => {
     },
   };
 
+  // DATA
   const data = {
     labels: Object.keys(showData.episodes),
     datasets: [
@@ -141,4 +194,4 @@ const Chart = ({showData, beginAtZero}) => {
   );
 };
 
-export default Chart;
+export default Graph;
