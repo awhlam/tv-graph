@@ -8,6 +8,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import chartTrendline from "chartjs-plugin-trendline";
 
 ChartJS.register(
   CategoryScale,
@@ -15,6 +16,7 @@ ChartJS.register(
   PointElement,
   LineElement,
   Tooltip,
+  chartTrendline,
 );
 
 const fontProp = (size) => {
@@ -114,6 +116,11 @@ const Chart = ({showData, beginAtZero}) => {
         data: Object.values(showData.episodes).map(value => value.vote_average),
         label: "Rating",
         borderColor: "rgb(255, 99, 132)",
+        trendlineLinear: {
+          style: "black",
+          lineStyle: "dotted",
+          width: 2
+        }
       },
       {
         data: Object.values(showData.episodes).map(value => value.vote_count),
