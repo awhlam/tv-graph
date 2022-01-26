@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div className="column">
       <h1>
-        TV Graph - See Episode Ratings over Time
+        TV Graph - See Episode Rating Trends
       </h1>
     </div>
   )

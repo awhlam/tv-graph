@@ -36,7 +36,7 @@ const Nav = ({showData, setShowData, beginAtZero, setBeginAtZero}) => {
       </div>
       <div className="column">
         <span>{showData ? `${showData.name} (${showData.first_air_date.slice(0,4)}) — Average Rating: ${showData.vote_average} — Total Votes: ${showData.vote_count.toLocaleString('en-US')}` : null}</span><br />
-        <span>{showData ? `${showData.overview.split('.')[0]}.` : null}</span><br />
+        <span>{showData ? `${showData.overview.split('. ')[0]}.` : null}</span><br />
       </div>
     </div>
   )
