@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
-const models = require('./models');
+const controllers = require('./controllers');
 const middleware = require('./middleware');
 
 const app = express();
@@ -15,4 +15,4 @@ app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
 
-app.get('/search', models.searchShow);
+app.get('/search', controllers.searchShow);
