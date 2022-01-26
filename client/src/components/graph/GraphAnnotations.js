@@ -1,10 +1,8 @@
 import fontStyle from './GraphStyles';
 
 const randColor = () => {
-  const num1 = Math.floor(Math.random() * 256);
-  const num2 = Math.floor(Math.random() * 256);
-  const num3 = Math.floor(Math.random() * 256);
-  return `rgba(${num1}, ${num2}, ${num3}, 0.1)`;
+  const rand = () => { return Math.floor(Math.random() * 256); };
+  return `rgba(${rand()}, ${rand()}, ${rand()}, 0.1)`;
 };
 
 const annotateSeason = (season, start, end) => ({

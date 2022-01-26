@@ -14,9 +14,15 @@ function Nav({
 
     try {
       const { data } = await axios.get('/search', { params: { query: showName } });
-      setShowData(data);
+      if (Object.keys(data.episodes).length > 0) {
+        setShowData(data);
+      } else {
+        alert(`Searched for "${showName}", the closest match was "${data.name}", but it has no episodes with votes.`);
+        setShowName('');
+      }
     } catch (err) {
-      alert(`No TV shows were found for the search: ${showName}`);
+      alert(`No TV shows were found for the search: ${showName}.`);
+      setShowName('');
     }
   };
 
@@ -36,7 +42,7 @@ function Nav({
         <span className="bold">
           {showData ? `
             ${showData.name} (${showData.first_air_date.slice(0, 4)}) —
-            Average Rating: ${showData.vote_average} —
+            Show Rating: ${showData.vote_average} —
             Total Votes: ${showData.vote_count.toLocaleString('en-US')}`
             : null}
         </span>

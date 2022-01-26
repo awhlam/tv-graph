@@ -25,7 +25,6 @@ Chart.register(
 
 function Graph({ showData, beginAtZero }) {
   const data = graphData(showData);
-
   return (
     <div className="chart">
       <Line
