@@ -27,7 +27,8 @@ const Nav = ({showData, setShowData, beginAtZero, setBeginAtZero}) => {
         </form>
       </div>
       <div className="column">
-        <h3>Scale from 0: <input type="checkbox" className="checkbox" checked={beginAtZero} onChange={handleClick} /></h3>
+        <span className="bold">Scale Chart from Zero</span>
+        <input type="checkbox" className="checkbox" checked={beginAtZero} onChange={handleClick} />
       </div>
       <div className="column right">
         <span className="bold">{showData ? `${showData.name} (${showData.first_air_date.slice(0,4)}) — Average Rating: ${showData.vote_average} — Total Votes: ${showData.vote_count.toLocaleString('en-US')}` : null}</span><br />

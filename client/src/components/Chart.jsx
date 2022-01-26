@@ -19,9 +19,16 @@ ChartJS.register(
   Tooltip,
 );
 
-const fontProps = {
+const fontAxes = {
   size: 24,
-  weight: 'bold'
+  weight: 'bold',
+  family: "'Lato', sans-serif",
+}
+
+const fontTicks = {
+  size: 14,
+  weight: 'bold',
+  family: "'Lato', sans-serif",
 }
 
 const Chart = ({showData, beginAtZero}) => {
@@ -61,18 +68,20 @@ const Chart = ({showData, beginAtZero}) => {
     responsive: true,
     scales: {
       x: {
+        ticks: { font: fontTicks },
         title: {
           display: true,
           text: "Season & Episode Number",
-          font: fontProps
-        }
+          font: fontAxes
+        },
       },
       y: {
         beginAtZero: beginAtZero,
+        ticks: { font: fontTicks },
         title: {
           display: true,
-          text: "Viewer Rating",
-          font: fontProps
+          text: "Rating",
+          font: fontAxes
         }
       },
     },
