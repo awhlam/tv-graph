@@ -17,11 +17,11 @@ function Nav({
       if (Object.keys(data.episodes).length > 0) {
         setShowData(data);
       } else {
-        alert(`Searched for "${showName}", the closest match was "${data.name}", but it has no episodes with votes.`);
+        alert(`Searched for "${showName}". The closest match was "${data.name}" (${data.first_air_date.slice(0, 4)}), but it's episodes have 0 votes.`);
         setShowName('');
       }
     } catch (err) {
-      alert(`No TV shows were found for the search: ${showName}.`);
+      alert(`No TV shows were found for the search: "${showName}".`);
       setShowName('');
     }
   };
