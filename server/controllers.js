@@ -41,7 +41,12 @@ const searchShow = async (req, res) => {
           data.episodes.forEach((ep) => {
             if (ep.vote_count) {
               const epNum = `${ep.season_number}.${String(ep.episode_number).padStart(2, "0")}`;
-              episodes[epNum] = ep.vote_average;
+              episodes[epNum] = {
+                vote_average: ep.vote_average,
+                air_date: ep.air_date,
+                name: ep.name,
+                vote_count: ep.vote_count,
+              };
             }
           });
         })

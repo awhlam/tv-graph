@@ -5,7 +5,6 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
@@ -15,20 +14,15 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
 );
 
-const fontAxes = {
-  size: 24,
-  weight: 'bold',
-  family: "'Lato', sans-serif",
-}
-
-const fontTicks = {
-  size: 14,
-  weight: 'bold',
-  family: "'Lato', sans-serif",
+const fontProp = (size) => {
+  return {
+    size: size,
+    weight: 'bold',
+    family: "'Roboto', sans-serif",
+  }
 }
 
 const Chart = ({showData, beginAtZero}) => {
@@ -66,22 +60,38 @@ const Chart = ({showData, beginAtZero}) => {
   const options = {
     animation,
     responsive: true,
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem, chart) => {
+            const index = tooltipItem.dataIndex;
+            return data.datasets.map(ds => {
+              let label = '';
+              if (['Rating', 'Votes'].includes(ds.label)) {
+                label = `${ds.label}: `;
+              }
+              return `${label}${ds.data[index]}`;
+            })
+          }
+        }
+      },
+    },
     scales: {
       x: {
-        ticks: { font: fontTicks },
+        ticks: { font: fontProp(18) },
         title: {
           display: true,
           text: "Season & Episode Number",
-          font: fontAxes
+          font: fontProp(24),
         },
       },
       y: {
         beginAtZero: beginAtZero,
-        ticks: { font: fontTicks },
+        ticks: { font: fontProp(18) },
         title: {
           display: true,
           text: "Rating",
-          font: fontAxes
+          font: fontProp(24),
         }
       },
     },
@@ -91,15 +101,30 @@ const Chart = ({showData, beginAtZero}) => {
     labels: Object.keys(showData.episodes),
     datasets: [
       {
-        data: Object.values(showData.episodes),
-        label: "Viewer Rating",
+        data: Object.values(showData.episodes).map(value => value.name),
+        label: "Name",
+        hidden: true,
+      },
+      {
+        data: Object.values(showData.episodes).map(value => value.air_date),
+        label: "Air Date",
+        hidden: true,
+      },
+      {
+        data: Object.values(showData.episodes).map(value => value.vote_average),
+        label: "Rating",
         borderColor: "rgb(255, 99, 132)",
+      },
+      {
+        data: Object.values(showData.episodes).map(value => value.vote_count),
+        label: "Votes",
+        hidden: true,
       },
     ],
   };
 
   return (
-    <div class="chart">
+    <div className="chart">
       <Line
         options={options}
         data={data}
