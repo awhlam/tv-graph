@@ -14,8 +14,8 @@ const graphData = (showData) => ({
     {
       data: Object.values(showData.episodes).map((value) => value.vote_average),
       label: 'Rating',
-      borderColor: 'black',
-      backgroundColor: 'black',
+      borderColor: 'red',
+      backgroundColor: 'red',
       borderWidth: 2.5,
       trendlineLinear: {
         style: 'black',

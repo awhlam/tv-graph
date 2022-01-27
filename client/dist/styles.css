@@ -8,13 +8,18 @@ body {
   margin: 15px;
 }
 
-h1 {
-  text-align: center;
+.bold {
+  font-weight: 900;
 }
 
-.bold {
-  font-weight: bold;
-  color: red;
+.title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 64px;
+}
+
+.tagline {
+  font-size: 18px;
+  text-align: center;
 }
 
 .container {
@@ -55,6 +60,7 @@ h1 {
 input {
   font-size: 18px;
   padding: 10px;
+  margin-bottom: 5px;
 }
 
 input[type=checkbox] {
@@ -69,5 +75,4 @@ input[type=checkbox] {
 button {
   font-size: 18px;
   padding: 10px;
-  margin: 3px;
 }

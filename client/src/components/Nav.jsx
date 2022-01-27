@@ -30,7 +30,8 @@ function Nav({
     <div className="container">
       {/* TITLE */}
       <div className="column">
-        <h1>TV Graph - Episode Rating Trends</h1>
+        <span className="title">TV Graph</span><br />
+        <span className="tagline">EPISODE RATING TRENDS</span>
       </div>
 
       {/* SHOW INFO */}

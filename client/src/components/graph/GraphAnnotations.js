@@ -15,7 +15,7 @@ const annotateSeason = (season, start, end) => ({
     drawTime: 'afterDraw',
     enabled: true,
     content: `Season ${season}`,
-    font: fontStyle(18),
+    font: fontStyle(14),
     position: {
       x: 'center',
       y: 'start',
