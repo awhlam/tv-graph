@@ -13,13 +13,22 @@ const graphOptions = (showData, beginAtZero, data) => ({
       annotations: annotateShow(showData),
     },
     tooltip: {
+      xAlign: 'center',
+      yAlign: 'top',
+      padding: 14,
+      titleFont: fontStyle(18),
+      bodyFont: fontStyle(16),
+      bodySpacing: 4,
+      borderColor: 'red',
+      borderWidth: 1,
+      displayColors: false,
       callbacks: {
         label: (tooltipItem) => {
           const index = tooltipItem.dataIndex;
           return data.datasets.map((ds) => {
             let label = '';
             if (['Rating', 'Votes'].includes(ds.label)) {
-              label = `${ds.label}: `;
+              label = `${ds.label} - `;
             }
             return `${label}${ds.data[index]}`;
           });

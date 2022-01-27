@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 const graphData = (showData) => ({
   labels: Object.keys(showData.episodes),
   datasets: [
@@ -7,8 +9,11 @@ const graphData = (showData) => ({
       hidden: true,
     },
     {
-      data: Object.values(showData.episodes).map((value) => value.air_date),
-      label: 'Air Date',
+      data: Object.values(showData.episodes).map((value) => {
+        const date = moment(value.air_date);
+        return date.format('MMMM Do, YYYY');
+      }),
+      label: 'Date',
       hidden: true,
     },
     {
