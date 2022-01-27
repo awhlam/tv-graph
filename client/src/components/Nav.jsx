@@ -50,7 +50,7 @@ function Nav({
               : null}
           </span>
           <br />
-          <span>{showData ? `${showData.overview.slice(0, 300)}...` : null}</span>
+          <span>{showData ? `${showData.overview.slice(0, 350)}...` : null}</span>
           <br />
         </div>
       </div>

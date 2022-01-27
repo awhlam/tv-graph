@@ -22,6 +22,11 @@ body {
   text-align: center;
 }
 
+.footer {
+  font-style: italic;
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-direction: row;
