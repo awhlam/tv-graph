@@ -15,6 +15,7 @@ Deployed version: [televisiongraph.herokuapp.com](https://televisiongraph.heroku
 ## Dependencies
 - [React](https://reactjs.org)
 - [Axios](https://axios-http.com)
+- [Moment.js](https://momentjs.com)
 - [Node.js](https://nodejs.org/en) / [Express](https://expressjs.com)
 - [Webpack](https://webpack.js.org) / [Babel](https://babeljs.io)
 - [Chart.js](https://www.chartjs.org)
