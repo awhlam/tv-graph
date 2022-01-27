@@ -28,27 +28,40 @@ function Nav({
 
   return (
     <div className="container">
+      {/* TITLE */}
+      <div className="column">
+        <h1>TV Graph - Episode Rating Trends</h1>
+      </div>
+
+      {/* SHOW INFO */}
+      <div className="showInfo">
+        {/* POSTER */}
+        <div className="poster">
+          {showData ? <img src={`https://www.themoviedb.org/t/p/w92${showData.poster_path}`} /> : null }
+        </div>
+        {/* TEXT */}
+        <div className="showText">
+          <span className="bold">
+            {showData ? `
+              ${showData.name} (${showData.first_air_date.slice(0, 4)}) —
+              Show Rating: ${showData.vote_average} —
+              Total Votes: ${showData.vote_count.toLocaleString('en-US')}`
+              : null}
+          </span>
+          <br />
+          <span>{showData ? `${showData.overview.slice(0, 300)}...` : null}</span>
+          <br />
+        </div>
+      </div>
+
+      {/* SEARCH */}
       <div className="column">
         <form onSubmit={handleSubmit}>
           <input type="text" size="25" placeholder="Search for a TV Show" value={showName} onChange={handleChange} />
           <button type="submit">Search</button>
         </form>
-      </div>
-      <div className="column">
         <span>Scale Chart from Zero</span>
         <input type="checkbox" className="checkbox" checked={beginAtZero} onChange={handleClick} />
-      </div>
-      <div className="column right">
-        <span className="bold">
-          {showData ? `
-            ${showData.name} (${showData.first_air_date.slice(0, 4)}) —
-            Show Rating: ${showData.vote_average} —
-            Total Votes: ${showData.vote_count.toLocaleString('en-US')}`
-            : null}
-        </span>
-        <br />
-        <span>{showData ? `${showData.overview.slice(0, 250)}...` : null}</span>
-        <br />
       </div>
     </div>
   );

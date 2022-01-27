@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from './Header.jsx';
 import Nav from './Nav.jsx';
 import Graph from './graph/Graph.jsx';
 import Footer from './Footer.jsx';
@@ -10,7 +9,6 @@ function App() {
 
   return (
     <div>
-      <Header />
       <Nav
         showData={showData}
         setShowData={setShowData}

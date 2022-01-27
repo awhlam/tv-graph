@@ -30,7 +30,7 @@ function Graph({ showData, beginAtZero }) {
       <Line
         options={graphOptions(showData, beginAtZero, data)}
         data={data}
-        height={125}
+        height={100}
       />
     </div>
   );
