@@ -8,7 +8,7 @@ function App() {
   const [beginAtZero, setBeginAtZero] = useState(false);
 
   return (
-    <div>
+    <div className="column-container">
       <Nav
         showData={showData}
         setShowData={setShowData}

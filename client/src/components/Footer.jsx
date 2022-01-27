@@ -11,7 +11,10 @@ const Footer = () => (
         Source
       </a>{" "}
       — This product uses the{" "}
-      <a href="https://www.themoviedb.org/documentation/api" target="_blank">
+      <a
+        href="https://developers.themoviedb.org/3/getting-started/introduction"
+        target="_blank"
+      >
         TMDB API
       </a>{" "}
       but is not endorsed or certified by TMDB.
