@@ -35,7 +35,7 @@ const graphOptions = (showData, beginAtZero, data) => ({
       },
       title: {
         display: true,
-        text: 'Season.Episode #',
+        text: 'Season.Episode',
         font: fontStyle(24),
         color: 'black',
       },
