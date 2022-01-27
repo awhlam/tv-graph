@@ -15,6 +15,7 @@ function Nav({
     try {
       const { data } = await axios.get('/search', { params: { query: showName } });
       if (Object.keys(data.episodes).length > 0) {
+        setShowData();
         setShowData(data);
       } else {
         alert(`Searched for "${showName}". The closest match was "${data.name}" (${data.first_air_date.slice(0, 4)}), but it's episodes have 0 votes.`);

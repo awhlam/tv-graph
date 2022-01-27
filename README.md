@@ -9,7 +9,7 @@ Deployed version: [televisiongraph.herokuapp.com](https://televisiongraph.heroku
 3. Run `npm start` to start server.
 
 ## Notes
-- This product uses the TMDB API but is not endorsed or certified by TMDB.
+- This product uses the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) but is not endorsed or certified by TMDB.
 - Episodes with 0 votes are excluded from the chart.
 
 ## Dependencies
