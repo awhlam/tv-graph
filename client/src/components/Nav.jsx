@@ -59,11 +59,17 @@ function Nav({
       {/* SEARCH */}
       <div className="column">
         <form onSubmit={handleSubmit}>
-          <input type="text" size="25" placeholder="Search for a TV Show" value={showName} onChange={handleChange} />
-          <button type="submit">Search</button>
+          <input type="text" size="40" placeholder="Search for a TV Show" value={showName} onChange={handleChange} /><br/>
+          <div className="nav-row">
+            <div className="nav-column">
+              <input type="checkbox" className="checkbox" checked={beginAtZero} onChange={handleClick} />
+              <span className="scaleText">Scale Chart from Zero</span>
+            </div>
+            <div className="nav-column">
+              <button type="submit">Search</button>
+            </div>
+          </div>
         </form>
-        <span>Scale Chart from Zero</span>
-        <input type="checkbox" className="checkbox" checked={beginAtZero} onChange={handleClick} />
       </div>
     </div>
   );

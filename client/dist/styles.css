@@ -1,35 +1,14 @@
 body {
   margin: 0;
   background-color: #F7F7F7;
+  font-family: 'Roboto', sans-serif;
 }
 
 #app {
-  font-family: 'Roboto', sans-serif;
   margin: 15px;
 }
 
-.bold {
-  font-weight: 900;
-}
-
-.title {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 64px;
-  text-decoration: underline;
-}
-
-.tagline {
-  font-size: 16px;
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
-}
-
-img {
-  box-shadow: 2px 2px gray;
-}
+/***** Flexbox *****/
 
 .container {
   display: flex;
@@ -48,23 +27,41 @@ img {
   padding-right: 30px;
 }
 
+/***** Title *****/
+
+.title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 64px;
+  text-decoration: underline;
+}
+
+.tagline {
+  font-size: 16px;
+  text-align: center;
+}
+
+/***** Show Info *****/
+
 .showInfo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
+img {
+  box-shadow: 2px 2px gray;
+}
+
+.bold {
+  font-weight: 900;
+}
+
 .showText {
-  padding-left: 10px;
+  padding-left: 25px;
   width: 500px;
 }
 
-.chart {
-  border: 1px solid;
-  padding: 5px;
-  box-shadow: 2px 2px gray;
-  border-radius: 15px;
-}
+/***** Search *****/
 
 input {
   font-size: 18px;
@@ -76,12 +73,39 @@ input[type=checkbox] {
   vertical-align: middle;
   position: relative;
   bottom: 1px;
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+}
+
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scaleText {
+  font-size: 18px;
+  margin-left: 5px;
 }
 
 button {
   font-size: 18px;
-  padding: 10px;
+  padding: 5px 10px 5px 10px;
+}
+
+/***** Chart *****/
+
+.chart {
+  border: 1px solid;
+  padding: 5px;
+  box-shadow: 2px 2px gray;
+  border-radius: 15px;
+}
+
+/***** Footer *****/
+
+.footer {
+  text-align: center;
 }
