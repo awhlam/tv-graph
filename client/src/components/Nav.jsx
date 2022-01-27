@@ -15,6 +15,13 @@ function Nav({
     try {
       const { data } = await axios.get('/search', { params: { query: showName } });
       if (Object.keys(data.episodes).length > 0) {
+        let overview = data.overview;
+
+        if (overview.length > 350) {
+          overview = overview.slice(0, 350);
+          data.overview = `${overview.slice(0, overview.lastIndexOf(' '))}...`
+        }
+
         setShowData();
         setShowData(data);
       } else {
@@ -51,7 +58,7 @@ function Nav({
               : null}
           </span>
           <br />
-          <span>{showData ? `${showData.overview.slice(0, 350)}...` : null}</span>
+          <span>{showData ? `${showData.overview}` : null}</span>
           <br />
         </div>
       </div>
