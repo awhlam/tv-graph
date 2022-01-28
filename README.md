@@ -4,9 +4,24 @@ See ratings for TV shows by season and episode over time.
 Deployed version: [televisiongraph.herokuapp.com](https://televisiongraph.herokuapp.com)
 
 ## Setup
-1. Run `npm install` to install dependencies.
-2. Run `npm run build` to build scripts.
-3. Run `npm start` to start server.
+1. Install dependencies:
+```
+npm install
+```
+2. Obtain an API key from the [TMDB](https://developers.themoviedb.org/3/getting-started/introduction).
+3. Rename `.env.example` to `.env` and fill in your API key.
+4. Build scripts:
+```
+npm run build
+```
+5. Start the server:
+```
+npm start
+```
+6. Open the site:
+```
+http://localhost:3000
+```
 
 ## Notes
 - This product uses the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) but is not endorsed or certified by TMDB.
