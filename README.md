@@ -1,8 +1,9 @@
 # TV Graph
 See ratings for TV shows by season and episode over time.
 
-Deployed version: [televisiongraph.herokuapp.com](https://televisiongraph.herokuapp.com)
+Deployed: [televisiongraph.herokuapp.com](https://televisiongraph.herokuapp.com)
 
+![image](https://user-images.githubusercontent.com/32132177/152465391-678284a0-e3b4-4637-8837-595f3a2baf5b.png)
 ## Setup
 1. Install dependencies:
 ```
