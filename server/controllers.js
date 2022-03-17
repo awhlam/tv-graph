@@ -3,39 +3,32 @@ const axios = require('axios');
 
 const searchShow = async (req, res) => {
   let chartData = {};
-  console.log(req.query);
   let tvId;
   let seasons = [];
 
-  // search show name
   try {
     const { data } = await models.getShow(req.query);
     chartData = data.results[0];
     showId = data.results[0].id;
-    console.log('showId: ', showId);
   } catch (e) {
     res.status(500).send('Could not find show');
     return;
   }
 
-  // search seasons
   try {
     const { data } = await models.getSeasons(showId);
     seasons = Array.from(
       { length: data.number_of_seasons },
       (v, k) => k + 1,
     );
-    console.log('Seasons: ', seasons);
   } catch (e) {
     res.status(500).send('Failed to search for seasons');
     return;
   }
 
-  // search episodes
   try {
     (async () => {
       let episodes = {};
-
       await Promise.all(
         seasons.map(async (season) => {
           const { data } = await models.getEpisodes(season);
@@ -52,13 +45,9 @@ const searchShow = async (req, res) => {
           });
         })
       );
-
-      // sort episodes in ascending order
       chartData.episodes = Object.fromEntries(
         Object.entries(episodes).sort((a, b) => a[0] - b[0])
       );
-
-      // return sorted episode data
       res.send(chartData);
     })();
   } catch (e) {
